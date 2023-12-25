@@ -1,30 +1,21 @@
-import './App.css'
-import SayMyName from './components/SayMyName'
-import Pessoa from './components/Pessoa'
-import Frase from './components/Frase'
-import List from './components/List'
-import Evento from './components/Evento'
-import Form from './components/Form'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Empresa from './pages/Empresa'
+import Contato from './pages/Contato'
+import NavBar from './components/layout/NavBar'
+import Footer from './components/layout/Footer'
 
 function App() {
-
-  const nome = 'Carlos'
-
   return (
-    <div className="App">
-      <Frase/>
-      <SayMyName nome="João"/>
-      <SayMyName nome={nome}/>
-      <Pessoa 
-        nome="Rodi"
-        idade="56"
-        profissao="junior"
-        foto="https://via.placeholder.com/150"
-      />
-      <List/>
-      <Evento/>
-      <Form/>
-    </div>
+    <Router>
+      <NavBar/>
+      <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/empresa' element={<Empresa/>}/>
+        <Route exact path='/contato' element={<Contato/>}/>
+      </Routes>
+      <Footer/>
+    </Router>
   )
 }
 
